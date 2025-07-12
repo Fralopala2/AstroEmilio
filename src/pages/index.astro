@@ -1,11 +1,41 @@
----
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Clon Tesla - Paco</title>
+  </head>
+  <body>
+    <header>
+      <h1>Mi versión de la web de Tesla</h1>
+      <nav>
+        </nav>
+    </header>
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
----
+    <main>
+      <section style="height: 100vh; display: flex; align-items: center; justify-content: center; background-image: url('/images/6SEAT-600.jpg'); background-size: cover; background-position: center;">
+        <h2>Model X600</h2>
+        <p>Tu coche eléctrico definitivo</p>
+      </section>
 
-<Layout>
-	<Welcome />
-</Layout>
+      <section style="padding: 50px; text-align: center;">
+          <h3>Diseño y Rendimiento</h3>
+          <p>Explora las características.</p>
+          <img src="/images/interior-tesla.jpg" alt="Interior Tesla simulado" style="max-width: 80%; height: auto; margin-top: 20px;">
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Mi Tesla. Todos los derechos reservados.</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  /* Aquí puedes poner estilos globales */
+  body {
+    margin: 0;
+    font-family: sans-serif;
+    color: white; /* Por si el fondo de imagen es oscuro */
+  }
+</style>
