@@ -1,0 +1,31 @@
+---
+// src/components/CarouselCard.astro
+interface Props {
+  title: string;
+  subtitle?: string; // Optional subtitle like "Disponible con MOVE III"
+  imageUrl: string;
+  button1Text: string;
+  button2Text: string;
+}
+
+const { title, subtitle, imageUrl, button1Text, button2Text } = Astro.props;
+---
+
+<div class="flex-none w-full md:w-2/3 lg:w-1/2 xl:w-2/5 p-4 snap-center">
+  <div class="relative rounded-lg overflow-hidden shadow-lg h-96">
+    <img src={imageUrl} alt={title} class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70"></div>
+    <div class="absolute bottom-4 left-4 text-white p-2">
+      <h3 class="text-2xl font-bold mb-1">{title}</h3>
+      {subtitle && <p class="text-sm text-gray-300 mb-4">{subtitle}</p>}
+      <div class="flex space-x-2">
+        <button class="bg-blue-600 text-white px-6 py-2 rounded-md font-semibold text-sm hover:bg-blue-700 transition-colors duration-200">
+          {button1Text}
+        </button>
+        <button class="bg-white text-gray-800 px-6 py-2 rounded-md font-semibold text-sm hover:bg-gray-100 transition-colors duration-200">
+          {button2Text}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

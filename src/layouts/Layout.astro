@@ -1,22 +1,33 @@
 <!doctype html>
-<html lang="en">
-	<head>
+<html lang="es"> <head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{Astro.props.title}</title>
+
+		<style is:global>
+			@tailwind base;
+			@tailwind components;
+			@tailwind utilities;
+
+            /* *************************************************************** */
+            /* *** MUY IMPORTANTE: ELIMINA CUALQUIER OTRA ETIQUETA <style> *** */
+            /* *** QUE TENGAS EN ESTE ARCHIVO FUERA DE ESTE BLOQUE, Y ASEGÚRATE *** */
+            /* *** DE QUE NO HAY NINGÚN OTRO CSS QUE REINICIE HTML/BODY/MAIN *** */
+            /* *************************************************************** */
+
+            /* Estas son las únicas reglas CSS globales que deberían estar aquí */
+            html, body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                overflow-x: hidden; /* Esto es importante para evitar el scroll horizontal */
+            }
+		</style>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

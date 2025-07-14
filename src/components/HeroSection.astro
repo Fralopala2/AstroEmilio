@@ -1,0 +1,31 @@
+---
+// src/components/HeroSection.astro
+interface Props {
+  title: string;
+  imageUrl: string;
+  primaryButtonText: string;
+  secondaryButtonText: string;
+  textColor?: string;
+}
+
+const { title, imageUrl, primaryButtonText, secondaryButtonText, textColor = 'text-white' } = Astro.props;
+---
+
+<section
+  class="h-[92vh] w-full bg-cover bg-center bg-no-repeat flex flex-col items-center justify-between text-center relative flex-shrink-0"
+  style={`background-image: url('${imageUrl}');`}
+>
+  <div class="flex flex-col items-center justify-center pt-24 md:pt-32 lg:pt-40">
+    <h2 class={`text-5xl font-bold mb-4 ${textColor}`}>{title}</h2>
+
+    <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+      <button class="bg-blue-600 text-white px-20 py-2.5 rounded-md font-semibold transition-colors duration-200 text-sm">
+        {primaryButtonText}
+      </button>
+      <button class="bg-gray-200 text-gray-800 px-20 py-2.5 rounded-md font-semibold transition-colors duration-200 text-sm">
+        {secondaryButtonText}
+      </button>
+    </div>
+  </div>
+  
+  </section>

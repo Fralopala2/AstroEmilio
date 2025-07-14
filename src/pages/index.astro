@@ -1,41 +1,336 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Clon Tesla - Paco</title>
-  </head>
-  <body>
-    <header>
-      <h1>Mi versión de la web de Tesla</h1>
-      <nav>
-        </nav>
-    </header>
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import CarouselCard from '../components/CarouselCard.astro'; // Importa el nuevo componente
 
-    <main>
-      <section style="height: 100vh; display: flex; align-items: center; justify-content: center; background-image: url('/images/6SEAT-600.jpg'); background-size: cover; background-position: center;">
-        <h2>Model X600</h2>
-        <p>Tu coche eléctrico definitivo</p>
-      </section>
-
-      <section style="padding: 50px; text-align: center;">
-          <h3>Diseño y Rendimiento</h3>
-          <p>Explora las características.</p>
-          <img src="/images/interior-tesla.jpg" alt="Interior Tesla simulado" style="max-width: 80%; height: auto; margin-top: 20px;">
-      </section>
-    </main>
-
-    <footer>
-      <p>&copy; 2025 Mi Tesla. Todos los derechos reservados.</p>
-    </footer>
-  </body>
-</html>
-
-<style is:global>
-  /* Aquí puedes poner estilos globales */
-  body {
-    margin: 0;
-    font-family: sans-serif;
-    color: white; /* Por si el fondo de imagen es oscuro */
+// Datos para el PRIMER carrusel (Principal)
+const mainSlides = [
+  {
+    title: "Model 600 Abarth",
+    imageUrl: "/images/model-x-main.jpg",
+    primaryButtonText: "Encargar",
+    secondaryButtonText: "Prueba de conducción",
+    textColor: "text-white"
+  },
+  {
+    title: "Model 600R",
+    imageUrl: "/images/model-3-main.jpg",
+    primaryButtonText: "Encargar",
+    secondaryButtonText: "Prueba de conducción",
+    textColor: "text-white"
+  },
+  {
+    title: "Model 600N",
+    imageUrl: "/images/model-y-main.jpg",
+    primaryButtonText: "Encargar",
+    secondaryButtonText: "Prueba de conducción",
+    textColor: "text-white"
   }
-</style>
+];
+
+// Datos para el SEGUNDO carrusel (el nuevo de tarjetas)
+const cardSlides = [
+  {
+    title: "Model 600 Abarth", // Cambiado de "Model 600 Abarth" para que coincida con la imagen de ejemplo
+    subtitle: "Saber más",
+    imageUrl: "/images/model-y-card.jpg", // Usando Model Y card como en la imagen
+    button1Text: "Encargar",
+    button2Text: "Saber más"
+  },
+  {
+    title: "Model 600R", // Cambiado de "Model 600R" para que coincida con la imagen de ejemplo
+    subtitle: "Disponible con MOVE III",
+    imageUrl: "/images/model-3-card.jpg", // Usando Model 3 card como en la imagen
+    button1Text: "Encargar",
+    button2Text: "Saber más"
+  },
+  {
+    title: "Model 600N",
+    subtitle: "Explora y Configura",
+    imageUrl: "/images/model-y-card.jpg",
+    button1Text: "Encargar",
+    button2Text: "Saber más"
+  },
+  {
+    title: "Model 600C",
+    subtitle: "La Bestia Descapotable",
+    imageUrl: "/images/model-c-card.jpg",
+    button1Text: "Encargar",
+    button2Text: "Saber más"
+  }
+];
+---
+
+<Layout title="Clon Tesla - Página Principal">
+  <header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-4 text-black bg-white shadow-md transition-colors duration-300 ease-in-out">
+    <div class="flex-shrink-0 mr-auto">
+      <a href="/">
+        <img src="/images/logoLetras.svg" alt="Logo de seat 600" class="h-6" />
+      </a>
+    </div>
+
+    <nav class="hidden md:block absolute left-1/2 -translate-x-1/2">
+      <ul class="flex space-x-6 font-medium text-sm">
+        <li><a href="#" class="hover:bg-gray-100 px-3 py-1 rounded-md transition-colors duration-200">Vehículos</a></li>
+        <li><a href="#" class="hover:bg-gray-100 px-3 py-1 rounded-md transition-colors duration-200">Energía</a></li>
+        <li><a href="#" class="hover:bg-100 px-3 py-1 rounded-md transition-colors duration-200">Carga</a></li>
+        <li><a href="#" class="hover:bg-gray-100 px-3 py-1 rounded-md transition-colors duration-200">Descubrir</a></li>
+        <li><a href="#" class="hover:bg-gray-100 px-3 py-1 rounded-md transition-colors duration-200">Tienda</a></li>
+      </ul>
+    </nav>
+
+    <div class="hidden md:flex items-center space-x-4 ml-auto">
+      <a href="#" class="hover:bg-gray-100 p-1.5 rounded-md transition-colors duration-200">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9.247a3.75 3.75 0 100-7.495 3.75 3.75 0 000 7.495zM12 15a4 4 0 100-8 4 4 0 000 8z"></path></svg>
+      </a>
+      <a href="#" class="hover:bg-gray-100 p-1.5 rounded-md transition-colors duration-200">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+      </a>
+      <a href="#" class="hover:bg-gray-100 p-1.5 rounded-md transition-colors duration-200">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+      </a>
+    </div>
+
+    <div class="md:hidden">
+      <button class="text-black hover:bg-gray-100 p-2 rounded-md">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="carousel-container relative h-[92vh] w-screen overflow-hidden" data-carousel-type="full-screen">
+      <div class="carousel-slides flex transition-transform duration-500 ease-in-out h-full w-full">
+        {mainSlides.map((slide) => (
+          <HeroSection {...slide} />
+        ))}
+      </div>
+
+      <button class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black bg-opacity-30 text-white hover:bg-opacity-50 transition-opacity z-10">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+      </button>
+      <button class="carousel-next absolute right-8 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black bg-opacity-30 text-white hover:bg-opacity-50 transition-opacity z-10">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
+
+      <div class="carousel-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 mb-4 z-10">
+        {mainSlides.map((_, index) => (
+          <div class={`w-2.5 h-2.5 rounded-full cursor-pointer ${index === 0 ? 'bg-white' : 'bg-gray-400'}`} data-slide-to={index}></div>
+        ))}
+      </div>
+    </section>
+
+    <section class="carousel-container relative w-screen py-8 overflow-hidden" data-carousel-type="cards">
+      <div class="carousel-slides flex overflow-x-auto snap-x snap-mandatory pb-4 hide-scrollbar">
+        {cardSlides.map((card) => (
+          <CarouselCard {...card} />
+        ))}
+      </div>
+
+      <button class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black bg-opacity-30 text-white hover:bg-opacity-50 transition-opacity z-10">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+      </button>
+      <button class="carousel-next absolute right-8 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black bg-opacity-30 text-white hover:bg-opacity-50 transition-opacity z-10">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
+
+      <div class="carousel-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 mb-4 z-10">
+        </div>
+    </section>
+
+    <section class="w-full py-8">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row items-center">
+                <div class="p-8 flex-grow">
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Disfrute de Seat</h3>
+                    <p class="text-gray-600 mb-4">Programe una prueba de conducción hoy mismo.</p>
+                    <button class="bg-white text-gray-800 px-6 py-2 rounded-md font-semibold text-sm hover:bg-gray-200 transition-colors duration-200">
+                        Concertar una prueba de conducción
+                    </button>
+                </div>
+                <div class="flex-shrink-0 w-full md:w-1/3 h-48 md:h-auto">
+                    <img src="/images/disfrute-seat-promo.jpg" alt="Coche 600" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row items-center">
+                <div class="p-8 flex-grow">
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Seat Shop</h3>
+                    <p class="text-gray-600 mb-4">Compre accesorios para el vehículo y productos de la marca Seat.</p>
+                    <button class="bg-white text-gray-800 px-6 py-2 rounded-md font-semibold text-sm hover:bg-gray-200 transition-colors duration-200">
+                        Comprar ahora
+                    </button>
+                </div>
+                <div class="flex-shrink-0 w-full md:w-1/3 h-48 md:h-auto">
+                    <img src="/images/seat-shop-promo.jpg" alt="Accesorios 600" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full py-8 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-semibold text-center mb-8 text-gray-800">Encuentra tu Concesionario SEAT</h2>
+        <div class="w-full h-[500px] bg-gray-200 rounded-lg shadow-lg overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.165439268393!2d-3.689620584762519!3d40.42907997936495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422896c21a415b%3A0x637f374e2d3d3d6e!2sSEAT%20Autom%C3%B3viles%20Paredes!5e0!3m2!1ses!2ses!4v1678900000000!5m2!1ses!2ses"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <p class="text-center text-gray-600 text-sm mt-4">
+          Explora el mapa para encontrar concesionarios, puntos de servicio y tiendas SEAT cercanos a ti.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-black text-white p-4 text-center text-sm">
+    <p>&copy; 2025 Tesla Clone by Paco. Todos los derechos reservados.</p>
+    <div class="flex justify-center space-x-4 mt-2">
+        <a href="#" class="hover:underline">Privacidad</a>
+        <a href="#" class="hover:underline">Avisos legales</a>
+    </div>
+  </footer>
+
+  <style is:global>
+    /* Ocultar la barra de scroll para el carrusel de tarjetas */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  </style>
+
+  <script is:inline>
+    // Función genérica y mejorada para inicializar carruseles
+    function initializeCarousel(carouselContainer) {
+      const carouselSlides = carouselContainer.querySelector('.carousel-slides');
+      const prevButton = carouselContainer.querySelector('.carousel-prev');
+      const nextButton = carouselContainer.querySelector('.carousel-next');
+      const dotsContainer = carouselContainer.querySelector('.carousel-dots');
+      const slides = Array.from(carouselSlides.children); // Convertir HTMLCollection a Array
+      const totalSlides = slides.length;
+      let currentSlideIndex = 0; // Usamos "Index" para evitar confusión con el concepto de "página"
+
+      const carouselType = carouselContainer.dataset.carouselType; // "full-screen" o "cards"
+
+      let slidesPerPage = 1; // Por defecto para full-screen
+      let totalPages = totalSlides; // Por defecto para full-screen
+
+      function calculateCarouselMetrics() {
+        if (carouselType === 'cards') {
+            const firstCard = slides[0];
+            if (firstCard) {
+                const cardComputedStyle = getComputedStyle(firstCard);
+                const cardMarginLeft = parseFloat(cardComputedStyle.marginLeft);
+                const cardMarginRight = parseFloat(cardComputedStyle.marginRight);
+                const cardWidthWithMargin = firstCard.offsetWidth + cardMarginLeft + cardMarginRight;
+                
+                if (carouselSlides.offsetWidth === 0) {
+                    slidesPerPage = 1; // Fallback
+                } else {
+                    slidesPerPage = Math.floor(carouselSlides.offsetWidth / cardWidthWithMargin);
+                    slidesPerPage = Math.max(1, slidesPerPage);
+                }
+            } else {
+                slidesPerPage = 1; // Fallback si no hay cards
+            }
+            totalPages = Math.ceil(totalSlides / slidesPerPage);
+
+            if (dotsContainer) {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalPages; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('w-2.5', 'h-2.5', 'rounded-full', 'cursor-pointer', 'bg-gray-400');
+                    dot.dataset.slideTo = i.toString();
+                    dotsContainer.appendChild(dot);
+                }
+            }
+        }
+      }
+
+      function updateCarousel() {
+        if (carouselType === 'full-screen') {
+          carouselSlides.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+        } else { // carouselType === 'cards'
+          carouselSlides.scrollTo({
+              left: currentSlideIndex * carouselSlides.offsetWidth,
+              behavior: 'smooth'
+          });
+        }
+        
+        if (dotsContainer) {
+          Array.from(dotsContainer.children).forEach((dot, index) => {
+            if (index === currentSlideIndex) {
+              dot.classList.remove('bg-gray-400');
+              dot.classList.add('bg-white');
+            } else {
+              dot.classList.remove('bg-white');
+              dot.classList.add('bg-gray-400');
+            }
+          });
+        }
+      }
+
+      prevButton.addEventListener('click', () => {
+        currentSlideIndex = (currentSlideIndex - 1 + totalPages) % totalPages;
+        updateCarousel();
+      });
+
+      nextButton.addEventListener('click', () => {
+        currentSlideIndex = (currentSlideIndex + 1) % totalPages;
+        updateCarousel();
+      });
+
+      if (dotsContainer) {
+        dotsContainer.addEventListener('click', (event) => {
+          const clickedDot = event.target.closest('[data-slide-to]');
+          if (clickedDot) {
+            currentSlideIndex = parseInt(clickedDot.dataset.slideTo);
+            updateCarousel();
+          }
+        });
+      }
+
+      calculateCarouselMetrics();
+      updateCarousel();
+
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            const oldTotalPages = totalPages;
+            calculateCarouselMetrics();
+            
+            if (totalPages !== oldTotalPages) {
+                if (currentSlideIndex >= totalPages) {
+                    currentSlideIndex = totalPages - 1;
+                    if (currentSlideIndex < 0) currentSlideIndex = 0;
+                }
+            }
+            updateCarousel();
+        }, 250);
+      });
+    }
+
+    const mainCarousel = document.querySelector('section[data-carousel-type="full-screen"]');
+    if (mainCarousel) {
+      initializeCarousel(mainCarousel);
+    }
+
+    const cardCarousel = document.querySelector('section[data-carousel-type="cards"]');
+    if (cardCarousel) {
+      initializeCarousel(cardCarousel);
+    }
+  </script>
+</Layout>
